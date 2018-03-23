@@ -1,9 +1,37 @@
-.title {
-    h1 {
-        text-align: center;
-    }
-
-    p {
-        text-align: center;
-    }
+body, h1, h2, h3, h4, h5, p, label {
+    margin: 0;
+    padding: 0;
 }
+
+// Fonts import
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed|Montserrat');
+
+// Variables
+    // Fonts
+    $font-title: 'IBM Plex Sans Condensed', sans-serif;
+    $font-text: 'Montserrat', sans-serif;
+
+    // Colors
+    $color-hintblue: #F7FAFF;
+    $color-lightblue: #BFE6EB;
+    $color-blue: #71CFCE;
+    $color-lightpurple: #9A89AD;
+    $color-purple: #796686;
+    $color-lightbrown: #C5B794;
+
+// Background color
+body {
+    background-color:  $color-hintblue;
+}
+
+// Helper classes
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+// Components
+@import './Header/Header';
+@import './AddTodo/AddTodo';
+@import './TodoList/TodoList';
+@import './Todo/Todo';

@@ -1,0 +1,35 @@
+.todo {
+    font-family: $font-text;
+    width: 200px;
+    height: 300px;
+    margin-right: 30px;
+    border: 2px solid black;
+    border-radius: 6px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .todo-title {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid black;
+    }
+    
+    .todo-text {
+        height: 230px;
+        margin-top: 10px;
+
+        i {
+            float: left;
+            margin-right: 5px;
+            padding-left: 5px;
+            padding-top: 1px;
+        }
+
+        p {
+            width: 84%;
+            float: left;
+        }
+    }
+}

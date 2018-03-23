@@ -1,0 +1,67 @@
+.add-todo {
+    width: 310px;
+    margin: 30px auto;
+
+    .title, .todo-title, .todo-task, .submit {
+        font-family: $font-text;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .title, .todo-title, .submit {
+        margin: 10px auto;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .todo-title, .todo-task, .submit {
+        border: 1px solid black;
+        border-radius: 4px;
+    }
+
+    .todo-title, .todo-task {
+        padding-left: 5px;
+    }
+
+    .todo-title, .todo-task {
+        width: 300px;
+        height: 25px;
+    }
+
+    .add-task {
+        height: 20px;
+        margin: 0 auto;
+
+        i {
+            float: left;
+            margin-right: 10px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        p {
+            float: left;
+            font-family: $font-text;
+        }
+    }
+    .added-task-wrapper {
+        display: flex;
+
+        .added-task {
+            width: 84%;
+        }
+
+        i {
+            padding: 16px;
+            cursor: pointer;
+        }
+    }
+
+    .submit {
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+    }
+}
