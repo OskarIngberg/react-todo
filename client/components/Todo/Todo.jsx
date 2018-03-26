@@ -5,26 +5,50 @@ export class Todo extends Component {
         super(props);
 
         this.state = {
-            icon: 'far fa-circle'
+            title: this.props.title,
+            tasks: this.props.tasks
         }
 
         this.handleChecking = this.handleChecking.bind(this);
+        this.renderTasks = this.renderTasks.bind(this);
     }
 
-    handleChecking() {
-        this.state.icon === 'far fa-circle' 
-            ? this.setState({ icon: 'far fa-check-circle' })
-            : this.setState({ icon: 'far fa-circle' });
+    handleChecking(element) {
+        var circle = 'far fa-circle';
+        var circleChecked = 'far fa-check-circle';
+
+        if (element.className === circle) {
+            element.className = circleChecked;
+        } else {
+            element.className = circle;
+        }
+    }
+
+    renderTasks() {
+        var checkChanger = this.handleChecking;
+
+        var tasks = this.state.tasks.map(function(task, i) {
+            return (
+                <div key={i} className="todo-text">
+                    <i 
+                        className="far fa-circle"
+                        onClick = { (event) => checkChanger(event.target) }>
+                    </i>
+                    <p>{ task }</p>
+                </div>
+            )
+        });
+
+        return tasks;
     }
 
     render() {
         return (
             <div className="todo">
                 <h2 className="todo-title">{ this.props.title }</h2>
-                <div className="todo-text">
-                    <i className={this.state.icon} onClick={this.handleChecking}></i>
-                    <p>{ this.props.text }</p>
-                </div>
+                {
+                    this.renderTasks()
+                }
             </div>
         )
     }

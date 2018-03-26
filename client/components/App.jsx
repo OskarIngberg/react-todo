@@ -5,12 +5,25 @@ import { AddTodo } from './AddTodo/AddTodo.jsx';
 import { TodoList } from './TodoList/TodoList.jsx';
 
 export default class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todo: {}
+        }
+    }
+
+    onChildChanged(newState) {
+        this.setState({ todos: newState });
+        console.log(this.state.todo);
+    }
+
     render() {
         return (
             <div>
                 <Header />
                 <div className="container">
-                    <AddTodo />
+                    <AddTodo callbackParent={ (newState) => this.onChildChanged(newState) }/>
                     <TodoList />
                 </div>
             </div>

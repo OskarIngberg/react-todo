@@ -2,22 +2,41 @@ const mockCards = [
     {
         id: 1,
         title: 'Something',
-        text: 'This has to be done'
+        tasks: [
+                'This has to be done',
+                'Then this should be done'
+        ]
     },
     {
         id: 2,
         title: 'Another thing',
-        text: 'This should also be done'
+        tasks: [
+            'First this',
+            'Then this',
+            'And last but not least, this'
+        ]
     },
     {
         id: 3,
         title: 'The third task',
-        text: 'Not as important'
+        tasks: [
+            'Those',
+            'not',
+            'matter',
+            'which',
+            'order',
+            'these',
+            'tasks',
+            'are',
+            'done'
+        ]
     },
     {
         id: 4,
         title: 'Mabye a task',
-        text: 'Not sure if to be done at all'
+        tasks: [
+            'Not sure if to be done at all'
+        ]
     }
 ]
 

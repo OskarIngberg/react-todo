@@ -15,7 +15,7 @@ export class TodoList extends Component {
 
     renderTodos(array) {
         return array.map((todos) => {
-            return <Todo key={todos.id} title={ todos.title } text={ todos.text } />;
+            return <Todo key={todos.id} title={ todos.title } tasks={ todos.tasks } />;
         });
     }
 
