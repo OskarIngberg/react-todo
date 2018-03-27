@@ -3,8 +3,11 @@
     width: 200px;
     height: 300px;
     margin-right: 30px;
+    margin-bottom: 30px;
     border: 2px solid black;
     border-radius: 6px;
+    flex-grow: 0;
+    flex-shrink: 0;
 
     &:last-child {
         margin-right: 0;

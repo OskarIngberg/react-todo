@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 
-import CreateTodo from '../../services/CreateTodo';
-
 export class AddTodo extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             title: '',
-            tasks: [''],
-            tasksElements: [
-                <div key="0" className="added-task-wrapper">
-                    <input key="0" className="todo-task" type="text" placeholder="Task" onChange={(event) => this.addToTasksArray(event.target.value, 0)} />
-                </div>
-            ]
+            tasks: [],
+            tasksElements: []
         }
-
+        
+        this.addFirstTask = this.addFirstTask.bind(this);
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.addTodo = this.addTodo.bind(this);
         this.addToTasksArray = this.addToTasksArray.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({ tasksElements: [this.addFirstTask()] });
+    }
+
+    addFirstTask() {
+        const firstTask = 
+            <div key="0" className="added-task-wrapper">
+                <input 
+                    key="0"
+                    className="todo-task"
+                    type="text"
+                    placeholder="Task"
+                    ref={ (el) => this.firstTaskElement = el }
+                    onChange={(event) => this.addToTasksArray(event.target.value, 0)}
+                />
+            </div>;
+
+        return firstTask;
     }
 
     addTodo() {
@@ -28,9 +43,11 @@ export class AddTodo extends Component {
             tasks: this.state.tasks
         };
 
-        CreateTodo(todoObj);
-
         this.props.callbackParent(todoObj);
+        
+        // Bring back state to default values
+        this.setState({ title: '', tasks: [], tasksElements: [this.addFirstTask()] });
+        this.firstTaskElement.value = '';        
     }
 
     addToTasksArray(item, index) {
@@ -47,7 +64,13 @@ export class AddTodo extends Component {
 
         var taskElement = 
             <div key={key} className="added-task-wrapper">
-                <input key={key} className="todo-task added-task" type="text" placeholder="Task" onChange={(event) => this.addToTasksArray(event.target.value, key)} />
+                <input
+                    key={key}
+                    className="todo-task added-task"
+                    type="text" placeholder="Task"
+                    value={this.state.tasks[key]}
+                    onChange={(event) => this.addToTasksArray(event.target.value, key)} 
+                />
                 <i onClick={() => this.removeTask(key)} className="fas fa-times"></i>
             </div>;
 
@@ -78,7 +101,13 @@ export class AddTodo extends Component {
         return (
             <div className="add-todo">
                 <label className="title">Add new Todo:</label>
-                    <input className="todo-title" type="text" placeholder="Title" onChange={(event) => this.setState({ title: event.target.value })} />
+                    <input 
+                        className="todo-title"
+                        type="text"
+                        placeholder="Title"
+                        value={ this.state.title }
+                        onChange={(event) => this.setState({ title: event.target.value })}
+                    />
                 <label className="title">Tasks:</label>
                     { this.state.tasksElements }
                 <div className="add-task">

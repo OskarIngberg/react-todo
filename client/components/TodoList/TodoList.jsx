@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Todo } from '../Todo/Todo.jsx';
 
 import GetTodos from '../../services/GetTodos';
+import CreateTodo from '../../services/CreateTodo';
 
 export class TodoList extends Component {
     constructor(props) {
@@ -11,6 +12,13 @@ export class TodoList extends Component {
         this.state = {
             todos: GetTodos()
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        var newTodo = nextProps.updateChild;
+        newTodo.id = this.state.todos.length + 1;
+
+        CreateTodo(newTodo);
     }
 
     renderTodos(array) {

@@ -2,7 +2,7 @@ import mockCards from '../db/db.js';
 
 function CreateTodos(object) {
     var taskObj = {
-        id: mockCards.lenght,
+        id: mockCards.length + 1,
         title: object.title,
         tasks: object.tasks
     }
