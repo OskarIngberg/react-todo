@@ -34,7 +34,7 @@ export class Todo extends Component {
                         className="far fa-circle"
                         onClick = { (event) => checkChanger(event.target) }>
                     </i>
-                    <p>{ task }</p>
+                    <p>{ task.task }</p>
                 </div>
             )
         });

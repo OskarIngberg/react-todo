@@ -10,7 +10,7 @@ export class TodoList extends Component {
         super(props);
 
         this.state = {
-            todos: GetTodos()
+            todos: []
         }
     }
 
@@ -21,9 +21,15 @@ export class TodoList extends Component {
         CreateTodo(newTodo);
     }
 
+    componentDidMount() {
+        GetTodos.then((todos) => {
+            this.setState({ todos });
+        });
+    }
+
     renderTodos(array) {
         return array.map((todos) => {
-            return <Todo key={todos.id} title={ todos.title } tasks={ todos.tasks } />;
+            return <Todo key={todos._id} title={ todos.title } tasks={ todos.tasks } />;
         });
     }
 
