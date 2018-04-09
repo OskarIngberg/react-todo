@@ -8,9 +8,17 @@
     border-radius: 6px;
     flex-grow: 0;
     flex-shrink: 0;
+    position: relative;
 
     &:last-child {
         margin-right: 0;
+    }
+
+    .remove {
+        position: absolute;
+        top: 10px;
+        right: 7px;
+        cursor: pointer;
     }
 
     .todo-title {

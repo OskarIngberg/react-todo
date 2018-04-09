@@ -12,13 +12,30 @@ export class TodoList extends Component {
         this.state = {
             todos: []
         }
+
+        this.updateTodoList = this.updateTodoList.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
         var newTodo = nextProps.updateChild;
         newTodo.id = this.state.todos.length + 1;
 
+        var todos = this.state.todos.slice();
+        todos.push(newTodo);
+        this.setState({ todos });
+
         CreateTodo(newTodo);
+    }
+
+    updateTodoList(id) {
+        var todos = this.state.todos.slice();
+        todos.map((todo, index) => {
+            if (todo._id === id) {
+                todos.splice(index, 1);
+            }
+        });
+
+        this.setState({ todos });
     }
 
     componentDidMount() {
@@ -28,8 +45,8 @@ export class TodoList extends Component {
     }
 
     renderTodos(array) {
-        return array.map((todos) => {
-            return <Todo key={todos._id} title={ todos.title } tasks={ todos.tasks } />;
+        return array.map((todos, index) => {
+            return <Todo key={index} id={todos._id} title={ todos.title } tasks={ todos.tasks } updateTodoList={ this.updateTodoList } />;
         });
     }
 

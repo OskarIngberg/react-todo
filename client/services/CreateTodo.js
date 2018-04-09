@@ -1,13 +1,25 @@
-import mockCards from '../db/db.js';
+import url from '../config/config';
+
+import Axios from 'axios';
 
 function CreateTodos(object) {
     var taskObj = {
-        id: mockCards.length + 1,
         title: object.title,
         tasks: object.tasks
     }
 
-    mockCards.push(taskObj);
+    return (
+        new Promise(function(resolve, reject) {
+            Axios.post(`${url}/tasks`, taskObj)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    reject();
+                });
+        })
+    )
 }
 
 export default CreateTodos;

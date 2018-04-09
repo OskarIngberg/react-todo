@@ -6,7 +6,11 @@ export class AddTodo extends Component {
 
         this.state = {
             title: '',
-            tasks: [],
+            tasks: [
+                {
+                    task: ''
+                }
+            ],
             tasksElements: []
         }
         
@@ -46,13 +50,13 @@ export class AddTodo extends Component {
         this.props.callbackParent(todoObj);
         
         // Bring back state to default values
-        this.setState({ title: '', tasks: [], tasksElements: [this.addFirstTask()] });
-        this.firstTaskElement.value = '';        
+        this.setState({ title: '', tasks: [{}], tasksElements: [this.addFirstTask()] });
+        this.firstTaskElement.value = '';
     }
 
     addToTasksArray(item, index) {
         var tasks = this.state.tasks.slice();
-        tasks[index] = item;
+        tasks[index].task = item;
 
         this.setState({ tasks });
     }
@@ -74,7 +78,7 @@ export class AddTodo extends Component {
                 <i onClick={() => this.removeTask(key)} className="fas fa-times"></i>
             </div>;
 
-        tasks.push('');
+        tasks.push({ task: '' });
         this.setState({ tasks });
 
         tasksElements.push(taskElement);

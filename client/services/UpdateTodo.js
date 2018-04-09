@@ -1,15 +1,15 @@
 import url from '../config/config';
+
 import Axios from 'axios';
 
-var GetTodos = new Promise(function(resolve, reject) {
-    Axios.get(`${url}/tasks`)
+function UpdateTodo(id, body) {
+    Axios.put(`${url}/tasks/${id}`, body)
         .then((response) => {
-            resolve(response.data);
+            console.log(response);
         })
         .catch((error) => {
             console.log(error);
-            reject();
         });
-});
+}
 
-export default GetTodos;
+export default UpdateTodo;
