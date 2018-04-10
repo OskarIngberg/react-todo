@@ -3,6 +3,10 @@ body, h1, h2, h3, h4, h5, p, label {
     padding: 0;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 // Fonts import
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed|Montserrat');
 

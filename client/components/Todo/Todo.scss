@@ -21,10 +21,20 @@
         cursor: pointer;
     }
 
-    .todo-title {
+    .todo-title, .todo-title-input {
         text-align: center;
         padding: 20px 0;
         border-bottom: 1px solid black;
+    }
+
+    .todo-title-input {
+        background: none;
+        font-family: $font-text;
+        font-size: 1.5em;
+        font-weight: bold;
+        border: 0;
+        border-bottom: 1px solid black;
+        width: 100%;
     }
     
     .todo-text {

@@ -7,7 +7,7 @@
     "start": "start npm run mongo && start npm run api && start npm run webpack",
     "webpack": "webpack-dev-server",
     "mongo": "C:/\"Program Files\"/MongoDB/Server/3.6/bin/mongod",
-    "api": "node C:/Claremont/\"React App\"/todo-api/server.js"
+    "api": "node ../todo-api/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
